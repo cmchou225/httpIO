@@ -9,7 +9,11 @@ path: '/'
 
 const callback = function (response){
   console.log('In response to handler callback!');
-  console.log('response ', response);
+ 
+  response.on('data', function (chunk){
+    console.log('[-- CHUCK OF LENGTH ' + chunk.length + '--]');
+    console.log(chunk.toString());
+});
 }
 
 console.log("i'm about to make the request!");
